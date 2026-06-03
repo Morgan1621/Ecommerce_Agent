@@ -1,5 +1,6 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
 import { useColorScheme } from 'react-native';
+import "./global.css"; // Ajusta la ruta relativa según corresponda
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import AppTabs from '@/components/app-tabs';
