@@ -4,12 +4,12 @@
  * - Soporta clases personalizadas y control de accesibilidad.
  * - Accesibilidad: aria-hidden opcional para ocultar de screen readers cuando es decorativo.
  */
-interface ByteIconProps {
+interface EcommerceIconProps {
   className?: string
   ariaHidden?: boolean
 }
 
-export function ByteIcon({ className = "", ariaHidden }: ByteIconProps) {
+export function ByteIcon({ className = "", ariaHidden }: EcommerceIconProps) {
   return (
     <img
       src="/byte.svg"
