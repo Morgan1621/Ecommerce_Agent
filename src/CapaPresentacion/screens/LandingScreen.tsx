@@ -1,12 +1,12 @@
 import {
-    ScrollView
+  ScrollView
 } from "react-native";
 
-import CTASection from "src/app/CapaPresentacion/components/CTASection";
-import Footer from "src/app/CapaPresentacion/components/Footer";
-import FeaturesSection from "/src/app/CapaPresentacion/components/FeaturesSection";
-import Header from "/src/app/CapaPresentacion/components/Header";
-import HeroSection from "/src/app/CapaPresentacion/components/HeroSection";
+import CTASection from "@/CapaPresentacion/components/CTASection";
+import FeaturesSection from "@/CapaPresentacion/components/FeaturesSection";
+import Footer from "@/CapaPresentacion/components/Footer";
+import Header from "@/CapaPresentacion/components/Header";
+import HeroSection from "@/CapaPresentacion/components/HeroSection";
 
 export default function LandingScreen() 
 {
