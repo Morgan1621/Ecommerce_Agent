@@ -16,7 +16,7 @@ export default function HeroSection() {
 
       <Pressable
         className="bg-[#8B5E3C] mt-8 rounded-xl p-4"
-        onPress={() => router.push("/Chatbot")}
+        onPress={() => router.push("/public/chatbot")}
       >
         <Text className="text-center text-white text-lg font-semibold">
           Comenzar Chat
