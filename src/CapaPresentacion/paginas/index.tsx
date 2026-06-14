@@ -83,8 +83,16 @@ export default function Home()
               Automatiza tu servicio al cliente, optimiza procesos de venta y escala tu negocio sin límites. El futuro del comercio electrónico está aquí.
             </Text>
             <View style={styles.heroButtons}>
-              <TouchableOpacity style={styles.primaryBtn}><Text style={styles.primaryBtnText}>Chatea Gratis</Text></TouchableOpacity>
-              {/* <TouchableOpacity style={styles.secondaryBtn}><Text style={styles.secondaryBtnText}>Ver Demo</Text></TouchableOpacity> */}
+                {/* Botón Chatea Gratis */}
+                <TouchableOpacity 
+                  style={styles.primaryBtn}
+                  activeOpacity={0.8}
+                  onPress={() => router.push('/chat')}
+                >
+                  <Text style={styles.primaryBtnText}>Chatea Gratis</Text>
+                </TouchableOpacity>
+
+                {/* <TouchableOpacity style={styles.secondaryBtn}><Text style={styles.secondaryBtnText}>Ver Demo</Text></TouchableOpacity> */}
             </View>
           </View>
 
