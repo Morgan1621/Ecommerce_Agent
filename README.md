@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="200" src="https://github.com/Morgan1621/Ecommerce_Agent/blob/main/log_oficial.jpeg?raw=true"/>
+  <img width="300" src="https://github.com/Morgan1621/Ecommerce_Agent/blob/main/log_oficial.jpeg?raw=true"/>
 </div>
 
 
