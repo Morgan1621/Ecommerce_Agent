@@ -1,3 +1,18 @@
+<div align="center">
+  <img width="500" src="https://github.com/Morgan1621/ReactaCore/blob/master/Oficial.png?raw=true"/>
+</div>
+
+
+[![License: MIT](https://ziadoua.github.io/m3-Markdown-Badges/badges/LicenceMIT/licencemit1.svg)](LICENSE)
+
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=dotnet,mysql"/>
+  </a>
+</p>
+
+
 # Agente conversacional para una tienda electrónica 🤖 🗣
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
