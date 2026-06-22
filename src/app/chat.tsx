@@ -1,5 +1,5 @@
-import PaginaLogin from '@/CapaPresentacion/paginas/chat';
+import ChatScreen from '@/presentacion/screens/chatscreen';
 
-export default function LoginEspejo() {
-  return <PaginaLogin />;
+export default function ChatEspejo() {
+  return <ChatScreen />;
 }
