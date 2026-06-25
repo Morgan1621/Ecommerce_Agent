@@ -4,7 +4,7 @@
  */
 
 import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/presentacion/hooks/use-color-scheme';
+import { useColorScheme } from '@/presentation/hooks/use-color-scheme';
 
 export function useTheme() {
   const scheme = useColorScheme();
