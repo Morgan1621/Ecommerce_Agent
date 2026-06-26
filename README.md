@@ -1,72 +1,210 @@
 <div align="center">
-  <img width="300" src="https://github.com/Morgan1621/Ecommerce_Agent/blob/main/Logo.png?raw=true"/>
+  <img width="300" src="https://github.com/Morgan1621/Ecommerce_Agent/blob/main/log_oficial.jpeg?raw=true"/>
 </div>
 
-
-[![License: MIT](https://ziadoua.github.io/m3-Markdown-Badges/badges/LicenceMIT/licencemit1.svg)](LICENSE)
-
-
 <p align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=vite,react,vercel,nodejs,mysql,py,vscode,"/>
+  <a href="LICENSE">
+    <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/LicenceMIT/licencemit1.svg" alt="MIT License"/>
   </a>
 </p>
 
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=react,py,fastapi,vscode,git"/>
+  </a>
+</p>
 
-# Agente conversacional para una tienda electrónica 🤖 🗣
+# Agente Conversacional para Tienda Electrónica 🤖🗣
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Agente conversacional inteligente basado en un **sistema experto de reglas** que permite a los usuarios buscar productos, consultar categorías y segmentos de una tienda electrónica en tiempo real mediante **WebSockets**.
 
- Bienvenidos
-## Get started
+---
 
-1. Install dependencies
+## 🏗 Arquitectura del Proyecto
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+ECOMMERCE_AGENT/
+├── main.py                          # Servidor FastAPI + WebSocket
+├── requirements.txt                 # Dependencias Python
+├── .env                             # Variables de entorno (no se sube a GitHub)
+├── .gitignore
+└── src/
+    ├── domain/
+    │   ├── entities/
+    │   │   └── conversation.py      # Entidades: Regla, Mensaje
+    │   └── use_cases/
+    │       └── procesar_conversacion.py  # Flujo principal del agente
+    └── infrastructure/
+        ├── database/
+        │   └── connection.py        # Conexión a SQL Server (pymssql)
+        └── repositories/
+            └── conversation_repository.py  # Acceso a datos y SPs
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-### Other setup steps
+## 🗄 Bases de Datos
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+El proyecto utiliza **dos bases de datos en SQL Server**:
 
-## Learn more
+| Base de datos | Descripción |
+|---|---|
+| `DB_EcommerceAgent` | Cerebro del agente: reglas, palabras clave, plantillas de respuesta e historial de conversaciones |
+| `DB_ECOMMERCE` | Negocio: catálogo de productos, categorías, subcategorías y segmentos |
 
-To learn more about developing your project with Expo, look at the following resources:
+### Tablas principales en `DB_EcommerceAgent`
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+| Tabla | Descripción |
+|---|---|
+| `ReglasChatbot` | Reglas del sistema experto (Saludo, Búsqueda, No Entendido) |
+| `PalabrasClaveRegla` | Keywords que activan cada regla |
+| `PlantillasRespuesta` | Respuestas del agente con soporte para placeholder `[@TABLA]` |
+| `HistorialConversaciones` | Registro de sesiones por usuario |
+| `HistorialMensajes` | Log de mensajes enviados y recibidos |
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## ⚙️ Requisitos
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Python 3.12+
+- SQL Server 2022
+- Node.js (para el frontend React Native / Expo)
+- Postman (para pruebas de WebSocket)
+
+---
+
+## 🐍 Instalación del Backend (Python)
+
+**1. Clona el repositorio:**
+```bash
+git clone https://github.com/Morgan1621/Ecommerce_Agent.git
+cd Ecommerce_Agent
+```
+
+**2. Crea y activa el entorno virtual:**
+```bash
+python -m venv .venv
+# Windows
+.venv\Scripts\activate
+# Linux/Mac
+source .venv/bin/activate
+```
+
+**3. Instala las dependencias:**
+```bash
+pip install -r requirements.txt
+```
+
+**4. Crea el archivo `.env` en la raíz del proyecto:**
+```env
+DB_SERVER=TU_SERVIDOR:1433
+DB_NAME=DB_EcommerceAgent
+```
+> Reemplaza `TU_SERVIDOR` con el nombre de tu instancia SQL Server (ejemplo: `LIZ:1433`).
+> El proyecto usa **autenticación de Windows**, no requiere usuario ni contraseña.
+
+**5. Inicia el servidor:**
+```bash
+uvicorn main:app --reload
+```
+
+Deberías ver:
+```
+INFO:     Uvicorn running on http://127.0.0.1:8000
+[AGENTE] 3 regla(s) cargadas desde DB_EcommerceAgent.
+INFO:     Application startup complete.
+```
+
+---
+
+## 📦 Dependencias Python
+
+```txt
+fastapi==0.111.0
+uvicorn==0.29.0
+pymssql==2.3.1
+websockets==12.0
+python-dotenv==1.0.1
+```
+
+---
+
+## 🔌 WebSocket — Pruebas con Postman
+
+**1.** Abre Postman → Nueva request → tipo **WebSocket**
+
+**2.** Conecta a:
+```
+ws://127.0.0.1:8000/ws/chat/{usuario_id}
+```
+
+**3.** Envía mensajes de prueba:
+
+| Mensaje | Regla activada | Respuesta esperada |
+|---|---|---|
+| `hola` | Saludo Inicial | Mensaje de bienvenida |
+| `buenos dias` | Saludo Inicial | Mensaje de bienvenida |
+| `buscar CALZADO` | Búsqueda de Productos | Lista de productos de calzado |
+| `buscar TECNOLOGIA` | Búsqueda de Productos | Celulares, Computadoras |
+| `buscar DEPORTIVO` | Búsqueda de Productos | Segmento deportivo |
+| `xyz abc 123` | No Entendido | Mensaje de fallback |
+
+---
+
+## 🧠 Flujo del Sistema Experto
+
+```
+Usuario escribe mensaje
+        ↓
+Detectar keyword en arreglo de reglas (cargadas desde BD)
+        ↓
+┌───────────────────────────────────┐
+│  ¿Coincide con alguna keyword?    │
+└───────────────────────────────────┘
+       ↓ Sí                  ↓ No
+  Regla activada        Regla "No Entendido"
+       ↓
+  ¿AccionDinamica = true?
+       ↓ Sí                  ↓ No
+  Ejecutar SP             Respuesta estática
+  DB_ECOMMERCE            desde PlantillasRespuesta
+       ↓
+  Reemplazar [@TABLA]
+  con resultados del SP
+       ↓
+  Enviar respuesta por WebSocket
+       ↓
+  Guardar en HistorialMensajes
+```
+
+---
+
+## 📱 Frontend (React Native / Expo)
+
+**Instala dependencias:**
+```bash
+npm install
+```
+
+**Inicia la app:**
+```bash
+npx expo start
+```
+
+Opciones disponibles:
+- [Development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go)
+
+---
+
+## 🛡 Seguridad
+
+El archivo `.env` está incluido en `.gitignore` y **nunca debe subirse al repositorio**. Contiene la configuración de conexión al servidor SQL.
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia [MIT](LICENSE).
