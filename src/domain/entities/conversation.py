@@ -1,6 +1,16 @@
-from pydantic import BaseModel
+from dataclasses import dataclass
+from typing import Optional
 
-class RespuestaChatbot(BaseModel):
-    Id: int
-    Mensaje: str
-    Tipo: str
+@dataclass
+class Regla:
+    regla_id:        int
+    nombre_regla:    str
+    accion_dinamica: bool
+    accion_python:   Optional[str]
+
+@dataclass
+class Mensaje:
+    usuario_id:  str
+    texto:       str
+    es_bot:      bool = False
+    respuesta:   Optional[str] = None
