@@ -1,6 +1,5 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image } from 'react-native';
-import { COLORS, Producto, ItemCarrito, Usuario } from '../../domain/entities/types';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { COLORS, ItemCarrito, Producto, Usuario } from '../../domain/entities/types';
 
 // ─── Carrito ───────────────────────────────────────────────────────────────────
 export function PantallaCarrito({
