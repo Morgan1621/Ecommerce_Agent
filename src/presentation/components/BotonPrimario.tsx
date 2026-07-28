@@ -1,10 +1,4 @@
-import {
-  ActivityIndicator,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  ViewStyle,
-} from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, ViewStyle, } from 'react-native';
 import { COLORS } from '../../domain/entities/types';
 
 interface BotonPrimarioProps {
@@ -26,7 +20,7 @@ export function BotonPrimario({
   const estiloBoton = {
     primario:   { backgroundColor: COLORS.primary,              borderColor: COLORS.primary },
     secundario: { backgroundColor: 'rgba(0,191,255,0.05)',      borderColor: COLORS.border },
-    peligro:    { backgroundColor: 'rgba(229,57,53,0.15)',      borderColor: 'rgba(229,57,53,0.4)' },
+    peligro:    { backgroundColor: 'hsla(1, 77%, 55%, 0.15)',      borderColor: 'rgba(229,57,53,0.4)' },
     outline:    { backgroundColor: 'rgba(0,0,0,0.2)',           borderColor: COLORS.borderMuted },
   }[variante];
 
