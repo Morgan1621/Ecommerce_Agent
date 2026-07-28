@@ -1,5 +1,5 @@
+import { COLORS, Producto } from '@/domain/entities/types';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { COLORS, Producto } from '../domain/entities/types';
 
 type Props = {
   producto: Producto;

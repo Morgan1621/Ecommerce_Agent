@@ -56,7 +56,7 @@ export function PantallaCarrito({
                     </TouchableOpacity>
                   </View>
                 </View>
-              </View>
+                    </View>
             ))}
 
             {subtotal < 3000 && (
